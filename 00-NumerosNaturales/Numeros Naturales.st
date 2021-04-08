@@ -11,44 +11,46 @@ DenotativeObject subclass: #I
 I class
 	instanceVariableNames: 'next predecesor suc previous'!
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/6/2021 10:06:37'!
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:15:55'!
 * factor
 
 	^factor.! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/6/2021 10:13:57'!
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:15:57'!
 + unSumando
 
 	^unSumando next.! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/7/2021 15:50:58'!
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:16:00'!
 - sustraendo
+
 	^self error: self descripcionDeErrorDeNumerosNegativosNoSoportados.! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 10:59:35'!
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:16:12'!
 / divisor
 
 	self < divisor ifTrue: [^self error: self descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor].
-	
+
 	self = divisor ifTrue: [^I].
 	
-	^ (self-divisor < divisor) ifTrue: [^I] ifFalse: [^I + (self-divisor/divisor)].
-	
-	 ! !
+	^self - divisor < divisor ifTrue: [I] ifFalse: [I + (self-divisor/divisor)]. ! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 10:50:56'!
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:16:15'!
 < unOperando
-	^(unOperando isEqualTo: I) ifTrue:[false] ifFalse:[true].! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 10:53:41'!
+	^unOperando = I ifTrue:[false] ifFalse:[true].! !
+
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:16:29'!
 descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor
+
 	^'No se puede realizar la division'.! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/7/2021 15:50:34'!
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:16:35'!
 descripcionDeErrorDeNumerosNegativosNoSoportados
+	
 	^'No se puede realizar la resta'.! !
 
-!I class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 11:00:29'!
+!I class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
@@ -95,10 +97,10 @@ I subclass: #II
 II class
 	instanceVariableNames: ''!
 
-!II class methodsFor: 'as yet unclassified' stamp: 'Mati 4/6/2021 10:14:14'!
+!II class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:15:51'!
 * factor
 
-	^ (self previous * factor) + factor.! !
+	^self previous * factor + factor.! !
 
 !II class methodsFor: 'as yet unclassified' stamp: 'Mati 4/6/2021 10:14:28'!
 + unSumando
@@ -110,18 +112,44 @@ II class
 
 	^sustraendo restaModificada: self.! !
 
-!II class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 10:50:45'!
-< unOperando
-	(unOperando isEqualTo: I) ifTrue:[^false] ifFalse:[^(self-I)<(unOperando-I)].! !
+!II class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:13:38'!
+/ divisor
 
-!II class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 11:00:29'!
+	self < divisor ifTrue: [^self error: self descripcionDeErrorDeNoSePuedeDividirPorUnNumeroMayor].
+	
+	self = divisor ifTrue: [^I].
+	
+	^self - divisor < divisor ifTrue: [I] ifFalse: [I + (self-divisor/divisor)].! !
+
+!II class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:11:53'!
+< unOperando
+	^unOperando = I ifTrue:[false] ifFalse:[ self - I < (unOperando - I)].! !
+
+!II class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	next := nil.
+	next := III.
 	predecesor := I.
 	suc := III.
 	previous := I.! !
+
+!II class methodsFor: 'as yet unclassified' stamp: 'ARM 4/5/2021 21:07:59'!
+next
+
+	next ifNil:[
+		next _ self createChildNamed: self name, 'I'.
+		next previous: self.
+		].
+	^next! !
+
+!II class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:10'!
+previous
+	^previous! !
+
+!II class methodsFor: 'as yet unclassified' stamp: 'GDH 4/5/2021 21:04:30'!
+previous: aPreviousNumber 
+	previous _ aPreviousNumber! !
 
 !II class methodsFor: 'as yet unclassified' stamp: 'Mati 4/6/2021 10:14:40'!
 restaModificada: minuendo
@@ -142,11 +170,11 @@ II subclass: #III
 III class
 	instanceVariableNames: ''!
 
-!III class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 11:00:29'!
+!III class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	next := nil.
+	next := IIII.
 	predecesor := nil.
 	suc := IIII.
 	previous := II.! !
@@ -165,11 +193,11 @@ III subclass: #IIII
 IIII class
 	instanceVariableNames: ''!
 
-!IIII class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 11:00:29'!
+!IIII class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	next := nil.
+	next := IIIII.
 	predecesor := nil.
 	suc := IIIII.
 	previous := III.! !
@@ -188,11 +216,11 @@ IIII subclass: #IIIII
 IIIII class
 	instanceVariableNames: ''!
 
-!IIIII class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 11:00:29'!
+!IIIII class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
-	next := nil.
+	next := IIIIII.
 	predecesor := nil.
 	suc := IIIIII.
 	previous := IIII.! !
@@ -211,14 +239,83 @@ IIIII subclass: #IIIIII
 IIIIII class
 	instanceVariableNames: ''!
 
-!IIIIII class methodsFor: 'as yet unclassified' stamp: 'Mati 4/8/2021 11:00:29'!
+!IIIIII class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
+initializeCollaboratorsFromFile
+	"Auto generated method for loading purposes - Do not modify it"
+
+	next := IIIIIII.
+	predecesor := nil.
+	suc := nil.
+	previous := IIIII.! !
+
+
+!classDefinition: #IIIIIII category: 'Numeros Naturales'!
+IIIIII subclass: #IIIIIII
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Numeros Naturales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'IIIIIII class' category: 'Numeros Naturales'!
+IIIIIII class
+	instanceVariableNames: ''!
+
+!IIIIIII class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
+initializeCollaboratorsFromFile
+	"Auto generated method for loading purposes - Do not modify it"
+
+	next := IIIIIIII.
+	predecesor := nil.
+	suc := nil.
+	previous := IIIIII.! !
+
+
+!classDefinition: #IIIIIIII category: 'Numeros Naturales'!
+IIIIIII subclass: #IIIIIIII
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Numeros Naturales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'IIIIIIII class' category: 'Numeros Naturales'!
+IIIIIIII class
+	instanceVariableNames: ''!
+
+!IIIIIIII class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
+initializeCollaboratorsFromFile
+	"Auto generated method for loading purposes - Do not modify it"
+
+	next := IIIIIIIII.
+	predecesor := nil.
+	suc := nil.
+	previous := IIIIIII.! !
+
+
+!classDefinition: #IIIIIIIII category: 'Numeros Naturales'!
+IIIIIIII subclass: #IIIIIIIII
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Numeros Naturales'!
+
+"-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- "!
+
+!classDefinition: 'IIIIIIIII class' category: 'Numeros Naturales'!
+IIIIIIIII class
+	instanceVariableNames: ''!
+
+!IIIIIIIII class methodsFor: 'as yet unclassified' stamp: 'GDH 4/8/2021 15:17:47'!
 initializeCollaboratorsFromFile
 	"Auto generated method for loading purposes - Do not modify it"
 
 	next := nil.
 	predecesor := nil.
 	suc := nil.
-	previous := IIIII.! !
+	previous := IIIIIIII.! !
 
 I initializeAfterFileIn!
 II initializeAfterFileIn!
@@ -226,3 +323,6 @@ III initializeAfterFileIn!
 IIII initializeAfterFileIn!
 IIIII initializeAfterFileIn!
 IIIIII initializeAfterFileIn!
+IIIIIII initializeAfterFileIn!
+IIIIIIII initializeAfterFileIn!
+IIIIIIIII initializeAfterFileIn!
