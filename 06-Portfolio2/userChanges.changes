@@ -9010,3 +9010,339 @@ PASSED!
 PASSED!
 
 ----QUIT----(3 June 2021 01:27:54) CuisUniversity-4532.image priorSource: 18267304!
+
+----STARTUP---- (3 June 2021 16:18:20) as C:\Applications\CuisUniversity\windows64\windows64\CuisUniversity-4532.image!
+
+!TransferLeg methodsFor: 'reports' stamp: 'GDH 6/3/2021 16:21:49' overrides: 50905596!
+reportTransaction: aReceptiveAccountReporter
+
+	^aReceptiveAccountReporter reportTransferReceiverLeg: self.! !
+
+!methodRemoval: TransferReceiverLeg #reportTransaction: stamp: 'GDH 6/3/2021 16:21:49'!
+reportTransaction: aReceptiveAccountReporter
+
+	^aReceptiveAccountReporter reportTransferReceiverLeg: self.!
+!TransferReceiverLeg methodsFor: 'reports' stamp: 'GDH 6/3/2021 16:21:55' overrides: 50910189!
+reportTransaction: aReceptiveAccountReporter
+
+	^aReceptiveAccountReporter reportTransferReceiverLeg: self.! !
+!TransferLeg methodsFor: 'reports' stamp: 'GDH 6/3/2021 16:22:02' prior: 50910189 overrides: 50905596!
+reportTransaction: aReceptiveAccountReporter
+
+	self subclassResponsibility ! !
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GDH 6/3/2021 16:22:16'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test08TransferFromAccountAAddsToAccountB stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test09TransferKnowsBothLegs stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test10TransferLegsCanReachOppositeLegs stamp: 'GDH 6/3/2021 16:22:18'!
+PASSED!
+
+!testRun: #AccountReporterTest #test01AccountSummaryForEmptyAccountShowsOnlyBalanceInZero stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test02AccountSummaryForAccountWithDepositShowsDepositTransactionAndBalance stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test03AccountSummaryForAccountWithWithdrawShowsWithdrawTransactionAndBalance stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test04AccountSummaryForAccountWithSendingTransferShowsReceivingTransferAndBalance stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test05AccountSummaryForAccountWithReceivingTransferShowsReceivingTransferAndBalance stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test06TransferNetForEmptyAccountIsZero stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test07TransferNetForAccountWithOnlyRecevingTransfersShouldBeTransfersValues stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test08TransferNetForAccountWithOnlySendingTransfersShouldBeNegativeTransfersValues stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test09TransferNetForAccountWithSendingAndReceivingTransfersShouldBeNetValue stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test10TransferNetShouldNotTakeInAccountDepositAndWithdrawTransactions stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test11AccountSummaryForPortfolioShowsAllTransactionsAndBalance stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+!testRun: #AccountReporterTest #test12TransferNetForPortfolioCalculatesNetValueOfTransferTransactions stamp: 'GDH 6/3/2021 16:22:20'!
+PASSED!
+
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion' stamp: 'GDH 6/3/2021 16:25:33'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+!TransferTest methodsFor: 'nil' stamp: 'GDH 6/3/2021 16:25:45'!
+test01TransferFromAccountAAddsToAccountB
+	
+	| senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new. 
+	receiverAccount := ReceptiveAccount new.
+	
+	AccountTransfer register: 50 from: senderAccount to: receiverAccount.
+	
+	self assert: senderAccount balance = -50.
+	self assert: receiverAccount balance = 50.! !
+
+!methodRemoval: ReceptiveAccountTest #test08TransferFromAccountAAddsToAccountB stamp: 'GDH 6/3/2021 16:25:56'!
+test08TransferFromAccountAAddsToAccountB
+	
+	| senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new. 
+	receiverAccount := ReceptiveAccount new.
+	
+	AccountTransfer register: 50 from: senderAccount to: receiverAccount.
+	
+	self assert: senderAccount balance = -50.
+	self assert: receiverAccount balance = 50.!
+!TransferTest methodsFor: 'tests' stamp: 'GDH 6/3/2021 16:26:03'!
+test02TransferKnowsBothLegs
+	
+	| transfer senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	transfer := AccountTransfer register: 50 from: senderAccount to: receiverAccount.
+	
+	self assert: ( senderAccount hasRegistered: transfer senderLeg ).
+	self deny: ( senderAccount hasRegistered: transfer receiverLeg ).
+	
+	self assert: ( receiverAccount hasRegistered: transfer receiverLeg ).
+	self deny: ( receiverAccount hasRegistered: transfer senderLeg ).! !
+
+!methodRemoval: ReceptiveAccountTest #test09TransferKnowsBothLegs stamp: 'GDH 6/3/2021 16:26:11'!
+test09TransferKnowsBothLegs
+	
+	| transfer senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	transfer := AccountTransfer register: 50 from: senderAccount to: receiverAccount.
+	
+	self assert: ( senderAccount hasRegistered: transfer senderLeg ).
+	self deny: ( senderAccount hasRegistered: transfer receiverLeg ).
+	
+	self assert: ( receiverAccount hasRegistered: transfer receiverLeg ).
+	self deny: ( receiverAccount hasRegistered: transfer senderLeg ).!
+!TransferTest methodsFor: 'tests' stamp: 'GDH 6/3/2021 16:26:17'!
+test03TransferLegsCanReachOppositeLegs
+	
+	| transfer senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	transfer := AccountTransfer register: 50 from: senderAccount to: receiverAccount.
+	
+	self assert: ( transfer receiverLeg = transfer senderLeg oppositeLeg ).
+	self assert: ( transfer senderLeg = transfer receiverLeg oppositeLeg ).! !
+
+!methodRemoval: ReceptiveAccountTest #test10TransferLegsCanReachOppositeLegs stamp: 'GDH 6/3/2021 16:26:23'!
+test10TransferLegsCanReachOppositeLegs
+	
+	| transfer senderAccount receiverAccount |
+	
+	senderAccount := ReceptiveAccount new.
+	receiverAccount := ReceptiveAccount new.
+	
+	transfer := AccountTransfer register: 50 from: senderAccount to: receiverAccount.
+	
+	self assert: ( transfer receiverLeg = transfer senderLeg oppositeLeg ).
+	self assert: ( transfer senderLeg = transfer receiverLeg oppositeLeg ).!
+
+!testRun: #TransferTest #test01TransferFromAccountAAddsToAccountB stamp: 'GDH 6/3/2021 16:26:25'!
+PASSED!
+
+!testRun: #TransferTest #test02TransferKnowsBothLegs stamp: 'GDH 6/3/2021 16:26:25'!
+PASSED!
+
+!testRun: #TransferTest #test03TransferLegsCanReachOppositeLegs stamp: 'GDH 6/3/2021 16:26:25'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test01ReceptiveAccountHaveZeroAsBalanceWhenCreated stamp: 'GDH 6/3/2021 16:26:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test02DepositIncreasesBalanceOnTransactionValue stamp: 'GDH 6/3/2021 16:26:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test03WithdrawDecreasesBalanceOnTransactionValue stamp: 'GDH 6/3/2021 16:26:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test04WithdrawValueMustBePositive stamp: 'GDH 6/3/2021 16:26:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test05ReceptiveAccountKnowsRegisteredTransactions stamp: 'GDH 6/3/2021 16:26:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test06ReceptiveAccountDoNotKnowNotRegisteredTransactions stamp: 'GDH 6/3/2021 16:26:26'!
+PASSED!
+
+!testRun: #ReceptiveAccountTest #test07AccountKnowsItsTransactions stamp: 'GDH 6/3/2021 16:26:26'!
+PASSED!
+
+!testRun: #PortfolioTest #test01BalanceOfPortfolioWithoutAccountsIsZero stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test02BalanceOfPortfolioWithAccountsIsSumOfAccountsBalance stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test03BalanceOfPortfolioIsCalculatedRecursivelyOnPortfolios stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test04PortfolioWithoutAccountsHasNoRegisteredTransaction stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test05PortfolioHasRegisteredItsAccountsTransactions stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test06PortfolioLooksForRegisteredTransactionsRecursively stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test07PortfolioHasNoTransactionWhenHasNoAccounts stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test08PortfolioTransactionsIncludesAllItsAccountsTransactions stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test09PortfolioTransactionsAreCalculatedRecursively stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test10PortfolioCanNotIncludeTheSameAccountMoreThanOnce stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test11PortfolioCanNotIncludeAccountOfItsPortfolios stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test12PortfolioCanNotIncludeItself stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test13ComposedPortfolioCanNotHaveParentPortfolioAccount stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test14ComposedPortfolioCanNotHaveAccountOfAnyRootParentRecursively stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #PortfolioTest #test15PortfolioCanNotIncludeAnyOfTheComposedAccountOfPortfolioToAdd stamp: 'GDH 6/3/2021 16:26:28'!
+PASSED!
+
+!testRun: #AccountReporterTest #test01AccountSummaryForEmptyAccountShowsOnlyBalanceInZero stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test02AccountSummaryForAccountWithDepositShowsDepositTransactionAndBalance stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test03AccountSummaryForAccountWithWithdrawShowsWithdrawTransactionAndBalance stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test04AccountSummaryForAccountWithSendingTransferShowsReceivingTransferAndBalance stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test05AccountSummaryForAccountWithReceivingTransferShowsReceivingTransferAndBalance stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test06TransferNetForEmptyAccountIsZero stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test07TransferNetForAccountWithOnlyRecevingTransfersShouldBeTransfersValues stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test08TransferNetForAccountWithOnlySendingTransfersShouldBeNegativeTransfersValues stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test09TransferNetForAccountWithSendingAndReceivingTransfersShouldBeNetValue stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test10TransferNetShouldNotTakeInAccountDepositAndWithdrawTransactions stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test11AccountSummaryForPortfolioShowsAllTransactionsAndBalance stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
+
+!testRun: #AccountReporterTest #test12TransferNetForPortfolioCalculatesNetValueOfTransferTransactions stamp: 'GDH 6/3/2021 16:26:31'!
+PASSED!
