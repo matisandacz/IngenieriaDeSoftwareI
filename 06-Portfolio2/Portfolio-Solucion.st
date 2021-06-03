@@ -21,7 +21,7 @@ test02AccountSummaryForAccountWithDepositShowsDepositTransactionAndBalance
 
 	| expectedSummary account anAccountSummaryGenerator |
 	
-	expectedSummary := OrderedCollection with: 'Dep髎ito por 100.' with: 'Balance = 100'. 
+	expectedSummary := OrderedCollection with: 'Dep贸sito por 100.' with: 'Balance = 100'. 
 	
 	account := ReceptiveAccount new.
 	Deposit register: 100 on: account .
@@ -35,7 +35,7 @@ test03AccountSummaryForAccountWithWithdrawShowsWithdrawTransactionAndBalance
 
 	| expectedSummary account anAccountSummaryGenerator |
 	
-	expectedSummary := OrderedCollection with: 'Extracci髇 por 100.' with: 'Balance = -100'. 
+	expectedSummary := OrderedCollection with: 'Extracci贸n por 100.' with: 'Balance = -100'. 
 	
 	account := ReceptiveAccount new.
 	Withdraw register: 100 on: account.
@@ -155,14 +155,14 @@ test11AccountSummaryForPortfolioShowsAllTransactionsAndBalance
 	| expectedAccountSummary childSummary anAccountSummaryReporter parentPortfolio childPortfolio parentAccount childAccount |
 	
 	expectedAccountSummary := OrderedCollection 
-		with: 'Dep髎ito por 100.'
-		with: 'Extracci髇 por 50.'
+		with: 'Dep贸sito por 100.'
+		with: 'Extracci贸n por 50.'
 		with: 'Salida por transferencia de 20.'
 		with: 'Entrada por transferencia de 30.'
 		with: 'Balance = 60'.
 	
 	childSummary := OrderedCollection
-		with: 'Dep髎ito por 50.'
+		with: 'Dep贸sito por 50.'
 		with: 'Balance = 50'.
 		
 	expectedAccountSummary addAll: childSummary .
@@ -517,8 +517,16 @@ test07AccountKnowsItsTransactions
 	self assert: (account1 transactions includes: deposit1).
 ! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'GDH 5/30/2021 18:24:36'!
-test08TransferFromAccountAAddsToAccountB
+
+!classDefinition: #TransferTest category: 'Portfolio-Solucion'!
+TestCase subclass: #TransferTest
+	instanceVariableNames: ''
+	classVariableNames: ''
+	poolDictionaries: ''
+	category: 'Portfolio-Solucion'!
+
+!TransferTest methodsFor: 'tests' stamp: 'GDH 6/3/2021 16:25:45'!
+test01TransferFromAccountAAddsToAccountB
 	
 	| senderAccount receiverAccount |
 	
@@ -530,8 +538,8 @@ test08TransferFromAccountAAddsToAccountB
 	self assert: senderAccount balance = -50.
 	self assert: receiverAccount balance = 50.! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'MS 6/2/2021 15:35:56'!
-test09TransferKnowsBothLegs
+!TransferTest methodsFor: 'tests' stamp: 'GDH 6/3/2021 16:26:03'!
+test02TransferKnowsBothLegs
 	
 	| transfer senderAccount receiverAccount |
 	
@@ -546,8 +554,8 @@ test09TransferKnowsBothLegs
 	self assert: ( receiverAccount hasRegistered: transfer receiverLeg ).
 	self deny: ( receiverAccount hasRegistered: transfer senderLeg ).! !
 
-!ReceptiveAccountTest methodsFor: 'tests' stamp: 'MS 6/2/2021 15:35:56'!
-test10TransferLegsCanReachOppositeLegs
+!TransferTest methodsFor: 'tests' stamp: 'GDH 6/3/2021 16:26:17'!
+test03TransferLegsCanReachOppositeLegs
 	
 	| transfer senderAccount receiverAccount |
 	
@@ -909,7 +917,7 @@ report: anAccount
 !AccountSummaryReporter methodsFor: 'visit transaction operations' stamp: 'GDH 6/2/2021 22:39:59'!
 reportDeposit: aDeposit
 
-	accountSummary add: 'Dep髎ito por ' , aDeposit value asString , '.'.! !
+	accountSummary add: 'Dep贸sito por ' , aDeposit value asString , '.'.! !
 
 !AccountSummaryReporter methodsFor: 'visit transaction operations' stamp: 'GDH 6/2/2021 22:40:58'!
 reportTransferReceiverLeg: aTransferReceiverLeg
@@ -926,7 +934,7 @@ reportTransferSenderLeg: aTransferSenderLeg
 !AccountSummaryReporter methodsFor: 'visit transaction operations' stamp: 'GDH 6/2/2021 22:41:11'!
 reportWithdraw: aWithdraw
 
-	accountSummary add: 'Extracci髇 por ' , aWithdraw value asString , '.'.! !
+	accountSummary add: 'Extracci贸n por ' , aWithdraw value asString , '.'.! !
 
 
 !classDefinition: #TransferNetReporter category: 'Portfolio-Solucion'!
@@ -1080,6 +1088,11 @@ value
 	^transfer value.! !
 
 
+!TransferLeg methodsFor: 'reports' stamp: 'GDH 6/3/2021 16:22:02'!
+reportTransaction: aReceptiveAccountReporter
+
+	self subclassResponsibility ! !
+
 
 !classDefinition: #TransferReceiverLeg category: 'Portfolio-Solucion'!
 TransferLeg subclass: #TransferReceiverLeg
@@ -1100,7 +1113,7 @@ oppositeLeg
 	^transfer senderLeg.! !
 
 
-!TransferReceiverLeg methodsFor: 'reports' stamp: 'GDH 6/2/2021 21:56:08'!
+!TransferReceiverLeg methodsFor: 'reports' stamp: 'GDH 6/3/2021 16:21:55'!
 reportTransaction: aReceptiveAccountReporter
 
 	^aReceptiveAccountReporter reportTransferReceiverLeg: self.! !
