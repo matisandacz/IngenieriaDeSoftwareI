@@ -1,0 +1,89 @@
+1) Editorial tiene como clientes a empresas mayoristas, no minoristas o personas consumidoras finales.
+
+2) de manera batch recibe pedidos. Durante el dia se reciben archivos por mail que alguien pone en un directorio.
+
+A la noche se ejecuta un proceso que agarra esos archivos, los parsea y saca los pedidos que necesita.
+
+Objetivo: Trabajar de manera ONLINE con una API Rest.
+
+API = Interfaz
+Rest = Funciona sobre HTTP.
+
+Merchant Processor = Es un sistema externo que se va a utilizar cada vez que el cliente haga un pedido y lo tenga que pagar con tarjeta de credito. Ese pago debe ser autorizado por el merchant Processor.
+
+El merchant processor tiene un ambiente de produccion y de pruebas que se utiliza dependiendo el URL.
+Pero tambien cobra por prueba.
+
+Hay requisitos para enviar datos de pago al ambiente de desarrollo del Merchant Processor. Validarlo antes.
+
+El merchant processor no tiene un buen UP TIME. Si no se puede hacer el debito de la tarjeta, como son todos clientes conocidos, se vende igual, y se mete la transaccion en un archivo para que sea debitado a la noche.
+
+
+Interfaz de entrada del sistema: REST.
+
+Implementa varias operaciones como
+createCart / addTocart, listCart, etc.
+
+--------------------------------
+
+control point tests:
+
+cuando pensamos los nombres de los tests, queda mas claro que es lo que se quiere testear.
+
+regla para nombre de los tests: sintetiza el setup + exercise + assertion. decirte que sucede despues de que hiciste algo.
+
+"CreateCartWithNotRegisteredUser"
+
+Eso es simplemente el exercise. Pero que es lo que sucede?
+
+No se puede crear.
+
+CanNotCreateCartWithNotRegisteredUser.
+
+
+ValidateUserWhenIsNotRegistered.
+
+y que es lo que pasa? Falta el exercise.
+Ademas es una frase ambigua. Nuestro sistema no tiene la responsabilidad de validar usuarios, simplemente tiene que saber si se puede crear un carrito.
+
+
+"Manager, Controller, validate" son muy genericas.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
