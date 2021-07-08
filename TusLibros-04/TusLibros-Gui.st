@@ -151,14 +151,14 @@ buildActionButton: aButtonLabel
 	
 	^PluggableButtonMorph model: self model action: #actionButtonCallback label: aButtonLabel.! !
 
-!ErrorMessageWindow methodsFor: 'GUI building' stamp: 'GDH 7/8/2021 01:47:02'!
+!ErrorMessageWindow methodsFor: 'GUI building' stamp: 'MS 7/8/2021 15:53:02'!
 buildDescriptionMessage: aDescription
 
 	| firstRowLayoutMorph |
 
 	firstRowLayoutMorph := LayoutMorph newRow.
 	firstRowLayoutMorph separation: 0;
-	axisEdgeWeight: 1;
+	axisEdgeWeight: 0.5;
 	addMorph: (LabelMorph contents: aDescription).
 	
 	^firstRowLayoutMorph.! !
@@ -173,10 +173,10 @@ buildMorphicWindowWithDescription: aDescription buttonLabel: aButtonLabel
 	addMorph: (self buildActionButton: aButtonLabel).! !
 
 
-!ErrorMessageWindow methodsFor: 'initialization' stamp: 'GDH 7/8/2021 15:42:11'!
+!ErrorMessageWindow methodsFor: 'initialization' stamp: 'MS 7/8/2021 15:53:59'!
 defaultExtent
 
-	^1800@200.
+	^1600@200.
 	! !
 
 !ErrorMessageWindow methodsFor: 'initialization' stamp: 'GDH 7/8/2021 01:45:42'!
